@@ -24,9 +24,10 @@ def run_colmap(basedir, match_type):
     
     logfile_name = os.path.join(basedir, 'colmap_output.txt')
     logfile = open(logfile_name, 'w')
+    colmap_bin = 'd:\github\colmap\colmap.bat'
     
     feature_extractor_args = [
-        '/home/jasonzh2/.local/bin/colmap', 'feature_extractor', 
+        colmap_bin, 'feature_extractor', 
             '--database_path', os.path.join(basedir, 'database.db'), 
             '--image_path', os.path.join(basedir, 'images'),
             '--ImageReader.single_camera', '1',
@@ -37,7 +38,7 @@ def run_colmap(basedir, match_type):
     print('Features extracted')
 
     exhaustive_matcher_args = [
-        '/home/jasonzh2/.local/bin/colmap', match_type, 
+        colmap_bin, match_type, 
             '--database_path', os.path.join(basedir, 'database.db'), 
     ]
 
@@ -58,7 +59,7 @@ def run_colmap(basedir, match_type):
     #         '--Mapper.init_min_tri_angle', '4',
     # ]
     mapper_args = [
-        '/home/jasonzh2/.local/bin/colmap', 'mapper',
+        colmap_bin, 'mapper',
             '--database_path', os.path.join(basedir, 'database.db'),
             '--image_path', os.path.join(basedir, 'images'),
             '--output_path', os.path.join(basedir, 'sparse'), # --export_path changed to --output_path in colmap 3.6
